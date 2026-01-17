@@ -1,1 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grafana Monitoring Tool – Documentation</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #020617;
+    color: #e5e7eb;
+    line-height: 1.7;
+}
+
+header {
+    padding: 50px 20px;
+    text-align: center;
+    background: linear-gradient(120deg, #020617, #1e293b);
+}
+
+header h1 {
+    font-size: 42px;
+    color: #22c55e;
+}
+
+header p {
+    font-size: 18px;
+    color: #cbd5f5;
+}
+
+nav {
+    background: #020617;
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #1e293b;
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    color: #93c5fd;
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #22c55e;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+section {
+    margin-bottom: 60px;
+}
+
+h2 {
+    color: #22c55e;
+    border-left: 5px solid #22c55e;
+    padding-left: 12px;
+}
+
+h3 {
+    color: #38bdf8;
+}
+
+code, pre {
+    background: #020617;
+    color: #22c55e;
+    padding: 12px;
+    border-radius: 6px;
+    display: block;
+    overflow-x: auto;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+footer {
+    background: #020617;
+    text-align: center;
+    padding: 20px;
+    color: #94a3b8;
+    border-top: 1px solid #1e293b;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Grafana Monitoring Tool</h1>
+    <p>Complete Step-by-Step Guide for Grafana Monitoring Setup</p>
+</header>
+
+<nav>
+    <a href="#overview">Overview</a>
+    <a href="#prereq">Prerequisites</a>
+    <a href="#install">Installation</a>
+    <a href="#grafana">Grafana</a>
+    <a href="#prometheus">Prometheus</a>
+    <a href="#dashboards">Dashboards</a>
+</nav>
+
+<div class="container">
+
+<section id="overview">
+<h2>📌 Project Overview</h2>
+<p>
+This project provides a complete guide to install, configure, and use
+<b>Grafana</b> for monitoring system resources and applications using
+<b>Prometheus</b> and <b>Node Exporter</b>.
+</p>
+</section>
+
+<section id="prereq">
+<h2>📌 Prerequisites</h2>
+<ul>
+<li>Ubuntu 20.04 / 22.04</li>
+<li>Minimum 2 GB RAM</li>
+<li>Sudo / Root access</li>
+<li>Internet connectivity</li>
+</ul>
+</section>
+
+<section id="install">
+<h2>🔧 System Update</h2>
+<pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
+</section>
+
+<section id="grafana">
+<h2>📊 Install Grafana</h2>
+
+<h3>Add Grafana Repository</h3>
+<pre><code>
+sudo apt install -y apt-transport-https software-properties-common wget
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
+</code></pre>
+
+<h3>Install Grafana</h3>
+<pre><code>
+sudo apt update
+sudo apt install -y grafana
+</code></pre>
+
+<h3>Start Grafana</h3>
+<pre><code>
+sudo systemctl start grafana-server
+sudo systemctl enable grafana-server
+</code></pre>
+
+<p>
+Access Grafana at:
+<code>http://&lt;server-ip&gt;:3000</code>
+</p>
+
+<p>Default Login:</p>
+<pre><code>
+Username: admin
+Password: admin
+</code></pre>
+</section>
+
+<section id="prometheus">
+<h2>📈 Install Prometheus</h2>
+
+<pre><code>
+sudo useradd --no-create-home --shell /bin/false prometheus
+wget https://github.com/prometheus/prometheus/releases/latest/download/prometheus-linux-amd64.tar.gz
+tar xvf prometheus-linux-amd64.tar.gz
+cd prometheus-*
+</code></pre>
+
+<pre><code>
+sudo cp prometheus /usr/local/bin/
+sudo cp promtool /usr/local/bin/
+</code></pre>
+
+<h3>Install Node Exporter</h3>
+<pre><code>
+wget https://github.com/prometheus/node_exporter/releases/latest/download/node_exporter-linux-amd64.tar.gz
+tar xvf node_exporter-linux-amd64.tar.gz
+sudo cp node_exporter-*/node_exporter /usr/local/bin/
+</code></pre>
+
+<pre><code>
+node_exporter
+</code></pre>
+</section>
+
+<section id="dashboards">
+<h2>📊 Configure Grafana Dashboard</h2>
+
+<ol>
+<li>Login to Grafana</li>
+<li>Go to <b>Settings → Data Sources</b></li>
+<li>Add <b>Prometheus</b></li>
+<li>URL: <code>http://localhost:9090</code></li>
+<li>Click <b>Save & Test</b></li>
+</ol>
+
+<h3>Import Dashboard</h3>
+<pre><code>
+Dashboard ID: 1860
+</code></pre>
+</section>
+
+</div>
+
+<footer>
+<p>© 2026 Grafana Monitoring Tool • MIT License</p>
+</footer>
+
+</body>
+</html>
 
