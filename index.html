@@ -5,89 +5,132 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grafana Monitoring Tool – Documentation</title>
 
+<!-- AOS Animation -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 <style>
+:root {
+    --bg-main: #020617;
+    --bg-card: rgba(15, 23, 42, 0.8);
+    --accent: #22c55e;
+    --accent-blue: #38bdf8;
+    --text-main: #e5e7eb;
+    --text-muted: #94a3b8;
+}
+
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #020617;
-    color: #e5e7eb;
-    line-height: 1.7;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: radial-gradient(circle at top, #020617, #000);
+    color: var(--text-main);
+    line-height: 1.75;
 }
 
 header {
-    padding: 50px 20px;
+    padding: 80px 20px;
     text-align: center;
-    background: linear-gradient(120deg, #020617, #1e293b);
+    background: linear-gradient(135deg, #020617, #0f172a);
 }
 
 header h1 {
-    font-size: 42px;
-    color: #22c55e;
+    font-size: 48px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 header p {
-    font-size: 18px;
-    color: #cbd5f5;
+    font-size: 20px;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: auto;
 }
 
 nav {
-    background: #020617;
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #1e293b;
     position: sticky;
     top: 0;
+    z-index: 999;
+    background: rgba(2,6,23,0.85);
+    backdrop-filter: blur(10px);
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #1e293b;
 }
 
 nav a {
     color: #93c5fd;
-    margin: 0 12px;
+    margin: 0 14px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 nav a:hover {
-    color: #22c55e;
+    color: var(--accent);
 }
 
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
-    padding: 30px 20px;
+    padding: 50px 20px;
 }
 
 section {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 }
 
 h2 {
-    color: #22c55e;
-    border-left: 5px solid #22c55e;
-    padding-left: 12px;
+    font-size: 32px;
+    color: var(--accent);
+    margin-bottom: 20px;
 }
 
-h3 {
-    color: #38bdf8;
+.card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
 
-code, pre {
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+pre, code {
     background: #020617;
-    color: #22c55e;
-    padding: 12px;
-    border-radius: 6px;
-    display: block;
+    color: var(--accent);
+    padding: 14px;
+    border-radius: 10px;
     overflow-x: auto;
+    font-size: 14px;
 }
 
-ul {
+ul, ol {
     padding-left: 20px;
+}
+
+a.blog {
+    display: block;
+    padding: 15px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #020617, #0f172a);
+    color: #93c5fd;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a.blog:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(34,197,94,0.3);
+    color: var(--accent);
 }
 
 footer {
     background: #020617;
     text-align: center;
-    padding: 20px;
-    color: #94a3b8;
+    padding: 25px;
+    color: var(--text-muted);
     border-top: 1px solid #1e293b;
 }
 </style>
@@ -95,130 +138,132 @@ footer {
 
 <body>
 
-<header>
+<header data-aos="fade-down">
     <h1>Grafana Monitoring Tool</h1>
-    <p>Complete Step-by-Step Guide for Grafana Monitoring Setup</p>
+    <p>Production-ready Grafana Monitoring with Prometheus & Node Exporter</p>
 </header>
 
 <nav>
     <a href="#overview">Overview</a>
     <a href="#prereq">Prerequisites</a>
-    <a href="#install">Installation</a>
     <a href="#grafana">Grafana</a>
     <a href="#prometheus">Prometheus</a>
     <a href="#dashboards">Dashboards</a>
+    <a href="#blogs">Blogs</a>
 </nav>
 
 <div class="container">
 
-<section id="overview">
+<section id="overview" data-aos="fade-up">
+<div class="card">
 <h2>📌 Project Overview</h2>
 <p>
-This project provides a complete guide to install, configure, and use
-<b>Grafana</b> for monitoring system resources and applications using
-<b>Prometheus</b> and <b>Node Exporter</b>.
+This repository provides a <b>step-by-step enterprise guide</b> to deploy
+<b>Grafana Monitoring</b> using <b>Prometheus</b> and <b>Node Exporter</b>.
+It is suitable for DevOps, Cloud, AI infrastructure, and production environments.
 </p>
+</div>
 </section>
 
-<section id="prereq">
-<h2>📌 Prerequisites</h2>
+<section id="prereq" data-aos="fade-up">
+<div class="card">
+<h2>⚙️ Prerequisites</h2>
 <ul>
 <li>Ubuntu 20.04 / 22.04</li>
-<li>Minimum 2 GB RAM</li>
-<li>Sudo / Root access</li>
-<li>Internet connectivity</li>
+<li>2 GB RAM minimum (4 GB recommended)</li>
+<li>Sudo / root privileges</li>
+<li>Open ports: 3000, 9090, 9100</li>
 </ul>
+</div>
 </section>
 
-<section id="install">
-<h2>🔧 System Update</h2>
-<pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
-</section>
+<section id="grafana" data-aos="fade-up">
+<div class="card">
+<h2>📊 Grafana Installation</h2>
 
-<section id="grafana">
-<h2>📊 Install Grafana</h2>
-
-<h3>Add Grafana Repository</h3>
 <pre><code>
+sudo apt update
 sudo apt install -y apt-transport-https software-properties-common wget
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
-</code></pre>
-
-<h3>Install Grafana</h3>
-<pre><code>
 sudo apt update
 sudo apt install -y grafana
 </code></pre>
 
-<h3>Start Grafana</h3>
 <pre><code>
-sudo systemctl start grafana-server
 sudo systemctl enable grafana-server
+sudo systemctl start grafana-server
 </code></pre>
 
-<p>
-Access Grafana at:
-<code>http://&lt;server-ip&gt;:3000</code>
-</p>
-
-<p>Default Login:</p>
-<pre><code>
-Username: admin
-Password: admin
-</code></pre>
+<p>Access: <code>http://&lt;server-ip&gt;:3000</code></p>
+</div>
 </section>
 
-<section id="prometheus">
-<h2>📈 Install Prometheus</h2>
+<section id="prometheus" data-aos="fade-up">
+<div class="card">
+<h2>📈 Prometheus & Node Exporter</h2>
 
 <pre><code>
-sudo useradd --no-create-home --shell /bin/false prometheus
 wget https://github.com/prometheus/prometheus/releases/latest/download/prometheus-linux-amd64.tar.gz
 tar xvf prometheus-linux-amd64.tar.gz
-cd prometheus-*
+sudo cp prometheus-*/prometheus /usr/local/bin/
 </code></pre>
 
-<pre><code>
-sudo cp prometheus /usr/local/bin/
-sudo cp promtool /usr/local/bin/
-</code></pre>
-
-<h3>Install Node Exporter</h3>
 <pre><code>
 wget https://github.com/prometheus/node_exporter/releases/latest/download/node_exporter-linux-amd64.tar.gz
 tar xvf node_exporter-linux-amd64.tar.gz
 sudo cp node_exporter-*/node_exporter /usr/local/bin/
-</code></pre>
-
-<pre><code>
 node_exporter
 </code></pre>
+</div>
 </section>
 
-<section id="dashboards">
-<h2>📊 Configure Grafana Dashboard</h2>
-
+<section id="dashboards" data-aos="fade-up">
+<div class="card">
+<h2>📊 Dashboard Setup</h2>
 <ol>
 <li>Login to Grafana</li>
-<li>Go to <b>Settings → Data Sources</b></li>
-<li>Add <b>Prometheus</b></li>
+<li>Settings → Data Sources → Prometheus</li>
 <li>URL: <code>http://localhost:9090</code></li>
-<li>Click <b>Save & Test</b></li>
+<li>Save & Test</li>
 </ol>
 
-<h3>Import Dashboard</h3>
-<pre><code>
-Dashboard ID: 1860
-</code></pre>
+<p><b>Recommended Dashboard:</b></p>
+<pre><code>Dashboard ID: 1860</code></pre>
+</div>
+</section>
+
+<section id="blogs" data-aos="fade-up">
+<h2>📚 Learning Resources & Blogs</h2>
+
+<div class="grid">
+<a class="blog" href="https://vegastack.com/tutorials/how-to-install-and-secure-grafana-on-ubuntu-22-04/" target="_blank">
+🔗 How to Install & Secure Grafana on Ubuntu 22.04
+</a>
+
+<a class="blog" href="https://grafana.com/docs/grafana/latest/" target="_blank">
+📘 Official Grafana Documentation
+</a>
+
+<a class="blog" href="https://prometheus.io/docs/introduction/overview/" target="_blank">
+📈 Prometheus Official Guide
+</a>
+</div>
 </section>
 
 </div>
 
 <footer>
-<p>© 2026 Grafana Monitoring Tool • MIT License</p>
+<p>© 2026 • Grafana Monitoring Tool • MIT License</p>
 </footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({
+    duration: 1200,
+    once: true
+});
+</script>
 
 </body>
 </html>
-
